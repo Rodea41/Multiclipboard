@@ -35,13 +35,13 @@ if len(sys.argv) == 2:
     command = sys.argv[1]
     data = load_items(SAVED_DATA) # Loads the current content of our json file into a variable so we can later access or append to it
 
-    if command == "save":
+    if command == "save":   # EXAMPLE: python3 multiclipboard.py save
         key = input("Enter a key: ")
         data[key] = clipboard.paste()
         save_items(SAVED_DATA, data)
         print(f"Saved contents of clipboard! Access with key:  {key}")
         
-    elif command == "load":
+    elif command == "load": # EXAMPLE: python3 multiclipboard.py load
         key = input("Enter a key: ")
         if key in data:
             clipboard.copy(data[key]) # If the key is in the json file, the "value" of the key is copied to the clipboard
@@ -49,9 +49,8 @@ if len(sys.argv) == 2:
         else:
             print("Key not found!")
 
-
-    elif command == "list":
-        print("list function works")
+    elif command == "list": # EXAMPLE: python3 multiclipboard.py list
+        print(data)
     
 else:
     print("Unknown Command, Please enter save , load, or list")
